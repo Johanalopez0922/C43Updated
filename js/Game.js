@@ -2,6 +2,12 @@ class Game {
   constructor() {
     this.resetTitle = createElement("h2");
     this.resetButton = createButton("");
+
+    this.leaderboardTitle = createElement("h2"); 
+
+    this.leader1 = createElement("h2"); 
+    this.leader2 = createElement("h2"); 
+
   }
 
   getState() {
@@ -10,6 +16,7 @@ class Game {
       gameState = data.val();
     });
   }
+
   update(state) {
     database.ref("/").update({
       gameState: state
@@ -70,6 +77,16 @@ class Game {
 
     this.resetButton.class("resetButton");
     this.resetButton.position(width / 2 + 230, 100);
+
+    this.leaderboardTitle.html("Tabla de puntuacion"); 
+    this.leaderboardTitle.class("resetText"); 
+    this.leaderboardTitle.position(width/3 - 60, 40); 
+
+    this.leader1.class("leadersText"); 
+    this.leader2.class("leadersText"); 
+
+    this.leader1.position(width/3-50, 80); 
+    this.leader2.position(width/3-50, 130); 
 
   }
 

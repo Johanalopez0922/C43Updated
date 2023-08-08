@@ -97,7 +97,7 @@ class Game {
 
     if (allPlayers !== undefined) {
       image(track, 0, -height * 5, width, height * 6);
-
+      this.showLeaderboard(); 
       //índice de la matriz
       var index = 0;
       for (var plr in allPlayers) {
@@ -182,6 +182,28 @@ handlePlayerControls() {
   if (keyIsDown(RIGHT_ARROW) && player.positionX < width / 2 + 300) {
     player.positionX += 5;
     player.update();
+    }
   }
-}
+
+  showLeaderboard(){
+    var leader1, leader2; 
+    var players = Object.values(allPlayers); 
+
+    if((players[0].rank === 0 && players[1].rank === 0 ) || players[0].rank === 1){
+      leader1 = players[0].rank + "&emsp;" + players[0].name + "&emsp;" + players[0].score; 
+      leader2 = players[1].rank + "&emsp;" + players[1].name + "&emsp;" + players[1].score; 
+    }
+    if( players[1].rank === 1){      
+      leader1 = players[1].rank + "&emsp;" + players[1].name + "&emsp;" + players[1].score; 
+      leader2 = players[0].rank + "&emsp;" + players[0].name + "&emsp;" + players[0].score; 
+    }
+
+    this.leader1.html(leader1); 
+    this.leader2.html(leader2);
+
+  }
+
+
+
+
 }

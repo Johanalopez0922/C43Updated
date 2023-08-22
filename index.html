@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Carreras de autos</title>
-    <!-- Lib -->
+    
     <script src="./lib/p5.min.js"></script>
     <script src="./lib/p5.dom.min.js"></script>
     <script src="./lib/p5.sound.min.js"></script>
@@ -19,33 +19,27 @@
 
     <link rel="stylesheet" href="style.css" />
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
 
-<script>
-  // La configuración de firebase de tu aplicación web
+    <script>     
+        const firebaseConfig = {
+        apiKey: "AIzaSyDvp3BuGgm5OSYytJLxFSZ-36n73-fZluE",
+        authDomain: "carreradeautos-d2d25.firebaseapp.com",
+        databaseURL: "https://carreradeautos-d2d25-default-rtdb.firebaseio.com",
+        projectId: "carreradeautos-d2d25",
+        storageBucket: "carreradeautos-d2d25.appspot.com",
+        messagingSenderId: "1083933408013",
+        appId: "1:1083933408013:web:df02ed3edc21efd2680e44"
+        };
+      
+        // Inicia Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
 
-  const firebaseConfig = {
-  apiKey: "AIzaSyDvp3BuGgm5OSYytJLxFSZ-36n73-fZluE",
-  authDomain: "carreradeautos-d2d25.firebaseapp.com",
-  databaseURL: "https://carreradeautos-d2d25-default-rtdb.firebaseio.com",
-  projectId: "carreradeautos-d2d25",
-  storageBucket: "carreradeautos-d2d25.appspot.com",
-  messagingSenderId: "1083933408013",
-  appId: "1:1083933408013:web:df02ed3edc21efd2680e44"
-};
-
-  // Inicia Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
-
-</script>
+    </script>
   </head>
   <body>
     <script src="./js/Game.js"></script>

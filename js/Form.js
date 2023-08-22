@@ -33,7 +33,7 @@ class Form {
       this.input.hide();
       this.playButton.hide();
       var message = `
-      Hello ${this.input.value()}
+      Hola ${this.input.value()}
       </br>espera a que otro jugador se una...`;
       this.greeting.html(message);
       playerCount += 1;

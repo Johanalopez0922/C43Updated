@@ -7,6 +7,7 @@ class Game {
 
     this.leader1 = createElement("h2");
     this.leader2 = createElement("h2");
+    this.playerMoving = false;
   }
 
   getState() {
@@ -94,7 +95,8 @@ class Game {
     if (allPlayers !== undefined) {
       image(track, 0, -height * 5, width, height * 6);
       this.showLeaderboard();
-
+      this.showLife();
+      this.showFuelBar();
       //índice de la matriz
       var index = 0;
       for (var plr in allPlayers) {
@@ -152,6 +154,15 @@ class Game {
       //el evento
       collected.remove();
     });
+
+    if (player.fuel > 0 && this.playerMoving) {
+      player.fuel -= 0.3;
+    }
+
+    if (player.fuel <= 0) {
+      gameState = 2;
+      this.gameOver();
+    }
   }
 
   handlePowerCoins(index) {
@@ -174,6 +185,7 @@ class Game {
       window.location.reload();
     });
   }
+
   showLeaderboard() {
     var leader1, leader2;
     var players = Object.values(allPlayers);
@@ -219,6 +231,7 @@ class Game {
 
   handlePlayerControls() {
     if (keyIsDown(UP_ARROW)) {
+      this.playerMoving = true;
       player.positionY += 10;
       player.update();
     }
@@ -235,6 +248,39 @@ class Game {
   }
 
   showRank() {
-    alert("FIN DEL JUEGO");
+    swal({
+      title: `¡Impresionante!${"\n"}Posición${"\n"}${player.rank}`,
+      text: "Cruzaste la línea de meta con éxito",
+      imageUrl:
+        "https://raw.githubusercontent.com/vishalgaddam873/p5-multiplayer-car-race-game/master/assets/cup.png",
+      imageSize: "100x100",
+      confirmButtonText: "Ok",
+    });
+  }
+
+  showLife() {
+    push();
+    image(lifeImage, width / 2 - 130, height - player.positionY - 300, 20, 20);
+    fill("white");
+    rect(width / 2 - 100, height - player.positionY - 300, 185, 20);
+    fill("red");
+    rect(width / 2 - 100, height - player.positionY - 300, player.life, 20);
+    noStroke();
+    pop();
+  }
+
+  showFuelBar() {
+    push();
+    image(fuelImage, width / 2 - 130, height - player.positionY - 250, 20, 20);
+    fill("white");
+    rect(width / 2 - 100, height - player.positionY - 250, 185, 20);
+    fill("yellow");
+    rect(width / 2 - 100, height - player.positionY - 250, player.fuel, 20);
+    noStroke();
+    pop();
+  }
+
+  gameOver() {
+    alert("Fin del Juego");
   }
 }

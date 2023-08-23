@@ -1,8 +1,8 @@
 var canvas;
-var backgroundImage, bgImg, car1_img, car2_img, track;
+var backgroundImage, bgImg, car1_img, car2_img, track, lifeImage;
 var database, gameState;
 var form, player, playerCount;
-var allPlayers, car1, car2,fuels, powerCoins;
+var allPlayers, car1, car2, fuels, powerCoins, cup;
 var cars = [];
 var fuelImage, powerCoinImage;
 //BP
@@ -13,7 +13,7 @@ function preload() {
   track = loadImage("../assets/track.jpg");
   fuelImage = loadImage("./assets/fuel.png");
   powerCoinImage = loadImage("./assets/goldCoin.png");
-  //Agregar la imagen de Life
+  lifeImage = loadImage("../assets/life.png");
 }
 
 //BP
@@ -23,7 +23,6 @@ function setup() {
   game = new Game();
   game.getState();
   game.start();
- 
 }
 
 //BP

@@ -43,20 +43,63 @@ class Game {
     fuels = new Group();
     powerCoins = new Group();
 
+    obstacle1 = new Group();
+    obstacle2 = new Group();
+
+    var obstacle1Position = [
+      { x: width / 2 - 150, y: height - 1300, image: obstacle1Image },
+      { x: width / 2 + 250, y: height - 1800, image: obstacle1Image },
+      { x: width / 2 - 180, y: height - 3300, image: obstacle1Image },
+      { x: width / 2 - 150, y: height - 4300, image: obstacle1Image },
+      { x: width / 2, y: height - 5300, image: obstacle1Image },
+    ];
+
+    var obstacle2Position = [
+      { x: width / 2 + 250, y: height - 800, image: obstacle2Image },
+      { x: width / 2 - 180, y: height - 2300, image: obstacle2Image },
+      { x: width / 2, y: height - 2800, image: obstacle2Image },
+      { x: width / 2 + 180, y: height - 3300, image: obstacle2Image },
+      { x: width / 2 + 250, y: height - 3800, image: obstacle2Image },
+      { x: width / 2 + 250, y: height - 4800, image: obstacle2Image },
+      { x: width / 2 - 180, y: height - 5500, image: obstacle2Image },
+    ];
+
     // Agregar sprite de combustible al juego
     this.addSprites(fuels, 4, fuelImage, 0.02);
 
     // Agregar sprite de moneda al juego
     this.addSprites(powerCoins, 18, powerCoinImage, 0.09);
+
+    this.addSprites(
+      obstacle1,
+      obstacle1Position.length,
+      obstacle1Image,
+      0.04,
+      obstacle1Position
+    );
+
+    this.addSprites(
+      obstacle2,
+      obstacle2Position.length,
+      obstacle2Image,
+      0.03,
+      obstacle2Position
+    );
   }
 
   // C38 TA
-  addSprites(spriteGroup, numberOfSprites, spriteImage, scale) {
+  addSprites(spriteGroup, numberOfSprites, spriteImage, scale, positions = []) {
     for (var i = 0; i < numberOfSprites; i++) {
       var x, y;
 
-      x = random(width / 2 + 150, width / 2 - 150);
-      y = random(-height * 4.5, height - 400);
+      if (positions.length > 0) {
+        x = positions[i].x;
+        y = positions[i].y;
+        spriteImage = positions[i].image;
+      } else {
+        x = random(width / 2 + 150, width / 2 - 150);
+        y = random(-height * 4.5, height - 400);
+      }
 
       var sprite = createSprite(x, y);
       sprite.addImage("sprite", spriteImage);

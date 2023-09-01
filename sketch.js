@@ -7,6 +7,7 @@ var cars = [];
 var fuelImage, powerCoinImage;
 var obstacle1Image, obstacle2Image;
 var obstacle1, obstacle2;
+var blastImage; 
 //BP
 function preload() {
   backgroundImage = loadImage("./assets/background.png");
@@ -18,6 +19,7 @@ function preload() {
   lifeImage = loadImage("../assets/life.png");
   obstacle1Image = loadImage("../assets/obstacle1.png");
   obstacle2Image = loadImage("../assets/obstacle2.png");
+  blastImage = loadImage("../assets/blast.png"); 
 }
 
 //BP
